@@ -1,0 +1,197 @@
+@use "colors";
+@use "sections";
+
+.main-container {
+  margin-bottom: 0.67em;
+
+  & .first-section {
+    text-align: left;
+    &__picture {
+      width: 100%;
+      height: 20em;
+      & img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1.67em;
+      }
+    }
+    &__title {
+      font-size: 2.8em;
+      line-height: 1;
+      margin-bottom: 1.5625rem;
+    }
+    &__text {
+      font-size: 1em;
+      line-height: 2;
+      color: colors.$darkGrayishBlue;
+      font-weight: 500;
+      margin-bottom: 2em;
+    }
+    &__button {
+      width: 12.4em;
+      height: 3.2em;
+      font-size: 0.95em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1133em;
+      background-color: colors.$softRed;
+      border: none;
+      color: #ffffff;
+      margin-bottom: 4.27em;
+      &:hover {
+        background-color: colors.$veryDarkBlue;
+        cursor: pointer;
+      }
+    }
+  }
+
+  & .second-section {
+    background-color: colors.$veryDarkBlue;
+    color: colors.$white;
+    padding: 2em 1.33em;
+    margin-bottom: 4.27em;
+    &__title {
+      font-size: 1.9em;
+      color: colors.$softOrange;
+      font-weight: 800;
+    }
+    &__article {
+      border-bottom: 1px solid colors.$lightWhite;
+      padding: 2em 0;
+      &:last-of-type {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+      &__title {
+        font-size: 1.4em;
+        font-weight: 700;
+        margin-bottom: 0.5em;
+        &:hover {
+          color: colors.$softOrange;
+          cursor: pointer;
+        }
+      }
+      &__text {
+        font-size: 1em;
+        letter-spacing: 0.1px;
+        color: colors.$lightWhite;
+        line-height: 1.8;
+      }
+    }
+  }
+
+  & .third-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.4em;
+    margin-bottom: 2em;
+    &__article {
+      display: flex;
+      column-gap: 1.467em;
+      justify-content: space-between;
+
+      &__image {
+        height: 100%;
+        width: 6.8em;
+      }
+      & div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      &__number {
+        font-size: 1.9em;
+        font-weight: 700;
+        color: colors.$grayishBlue;
+      }
+
+      &__title {
+        font-size: 1.2em;
+        color: colors.$veryDarkBlue;
+        font-weight: 800;
+        &:hover {
+          color: colors.$softRed;
+          cursor: pointer;
+        }
+      }
+
+      &__text {
+        margin-bottom: 0.4em;
+        font-size: 0.85em;
+        font-weight: 500;
+        text-align-last: left;
+        color: colors.$darkGrayishBlue;
+        line-height: 1.7;
+        letter-spacing: 0.073em;
+      }
+    }
+
+    @media (max-width: 74.99rem) {
+      &__article:last-child {
+        margin-bottom: 4em;
+      }
+    }
+  }
+
+  @media (min-width: 75rem) {
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 4.8em);
+    justify-content: center;
+    column-gap: 2em;
+    margin-bottom: 2em;
+    .first-section {
+      grid-row: 1 / 5;
+      grid-column: 1 / 3;
+      .first-section__flex1 {
+        display: flex;
+        justify-content: space-between;
+        .first-section__title {
+          flex: 1;
+          margin-right: 0.6em;
+          font-size: 3.9em;
+          font-weight: 800;
+        }
+        .first-section__flex2 {
+          flex: 1;
+          .first-section__text {
+            line-height: 1.5;
+            margin-bottom: 2.5em;
+          }
+        }
+      }
+    }
+    .second-section {
+      grid-column: 3 / 4;
+      grid-row: -11 / -3;
+      margin-bottom: 4.7em;
+    }
+    .third-section {
+      flex-direction: row;
+      grid-row: 9 / 11;
+      grid-column: 1 / 4;
+      margin-bottom: 0;
+
+      &__article {
+        margin-bottom: 1em;
+        &__text {
+          margin-bottom: 0;
+        }
+      }
+
+      .article-1 {
+        flex: 1;
+      }
+      .article-2 {
+        flex: 1;
+      }
+      .article-3 {
+        flex: 1;
+      }
+    }
+  }
+}
