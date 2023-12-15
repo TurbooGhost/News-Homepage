@@ -4,7 +4,7 @@
 .main-container {
   margin-bottom: 0.67em;
 
-  & .first-section {
+  .first-section {
     text-align: left;
     &__picture {
       width: 100%;
@@ -45,7 +45,7 @@
     }
   }
 
-  & .second-section {
+  .second-section {
     background-color: colors.$veryDarkBlue;
     color: colors.$white;
     padding: 2em 1.33em;
@@ -80,7 +80,7 @@
     }
   }
 
-  & .third-section {
+  .third-section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
