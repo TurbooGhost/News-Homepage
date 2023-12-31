@@ -1,157 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/images/favicon-32x32.png"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Frontend Mentor | News homepagee</title>
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <img
-          class="header__logo"
-          src="./assets/images/logo.svg"
-          alt="logo-image"
-        />
-        <nav class="header__nav">
-          <img
-            class="header__hamburguer-menu"
-            src="./assets/images/icon-menu.svg"
-            alt="hamburguer-menu-image"
-          />
-          <div class="header__nav__back">
-            <div class="header__nav__front">
-              <img
-                class="header__nav__close-icon"
-                src="./assets/images/icon-menu-close.svg"
-                alt="close-icon"
-              />
-              <div class="header__nav__menu">
-                <p class="header__nav__title">Home</p>
-                <p class="header__nav__title">New</p>
-                <p class="header__nav__title">Popular</p>
-                <p class="header__nav__title">Trending</p>
-                <p class="header__nav__title">Categories</p>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <main class="main-container">
-        <section class="first-section">
-          <picture class="first-section__picture">
-            <source
-              srcset="./assets/images/image-web-3-desktop.jpg"
-              media="(min-width: 768px)"
-            />
-            <source
-              srcset="./assets/images/image-web-3-mobile.jpg"
-              media="(max-width: 767px)"
-            />
-            <img src="./assets/images/image-web-3-mobile.jpg" alt="web-image" />
-          </picture>
-          <div class="first-section__flex1">
-            <h1 class="first-section__title">The Bright Future of Web 3.0?</h1>
-            <div class="first-section__flex2">
-              <p class="first-section__text">
-                We dive into the next evolution of the web that claims to put
-                the power of the platforms back into the hands of the people.
-                But is it really fulfilling its promise?
-              </p>
-              <button class="first-section__button">Read more</button>
-            </div>
-          </div>
-        </section>
-        <!-- seccion aside -->
-        <section class="second-section">
-          <h2 class="second-section__title">New</h2>
-          <article class="second-section__article">
-            <h3 class="second-section__article__title">
-              Hydrogen VS Electric Cars
-            </h3>
-            <p class="second-section__article__text">
-              Will hydrogen-fueled cars ever catch up to EVs?
-            </p>
-          </article>
-          <article class="second-section__article">
-            <h3 class="second-section__article__title">
-              The Downsides of AI Artistry
-            </h3>
-            <p class="second-section__article__text">
-              What are the possible adverse effects of on-demand AI image
-              generation?
-            </p>
-          </article>
-          <article class="second-section__article">
-            <h3 class="second-section__article__title">
-              Is VC Funding Drying Up?
-            </h3>
-            <p class="second-section__article__text">
-              Private funding by VC firms is down 50% YOY. We take a look at
-              what that means.
-            </p>
-          </article>
-        </section>
-        <!-- seccion bottom -->
-        <section class="third-section">
-          <article class="third-section__article article-1">
-            <img
-              class="third-section__article__image"
-              src="./assets/images/image-retro-pcs.jpg"
-              alt="retro-pcs-image"
-            />
-            <div>
-              <h4 class="third-section__article__number">01</h4>
-              <strong class="third-section__article__title"
-                >Reviving Retro PCs</strong
-              >
-              <p class="third-section__article__text">
-                What happens when old PCs are given modern upgrades?
-              </p>
-            </div>
-          </article>
-          <article class="third-section__article article-2">
-            <img
-              class="third-section__article__image"
-              src="./assets/images/image-top-laptops.jpg"
-              alt="top-laptops-image"
-            />
-            <div class="">
-              <h4 class="third-section__article__number">02</h4>
-              <strong class="third-section__article__title"
-                >Top 10 Laptops of 2022</strong
-              >
-              <p class="third-section__article__text">
-                Our best picks for various needs and budgets.
-              </p>
-            </div>
-          </article>
-          <article class="third-section__article article-3">
-            <img
-              class="third-section__article__image"
-              src="./assets/images/image-gaming-growth.jpg"
-              alt="growth-gamming-image"
-            />
-            <div>
-              <h4 class="third-section__article__number">03</h4>
-              <strong class="third-section__article__title"
-                >The Growth of Gaming</strong
-              >
-              <p class="third-section__article__text">
-                How the pandemic has sparked fresh opportunities.
-              </p>
-            </div>
-          </article>
-        </section>
-      </main>
-    </div>
-    <script src="./assets/js/script.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <title>Frontend Mentor | News homepagee</title>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <img class="header__logo" src="./assets/images/logo.svg" alt="logo-image" />
+                <nav class="header__nav">
+                    <img
+                        class="header__hamburguer-menu"
+                        src="./assets/images/icon-menu.svg"
+                        alt="hamburguer-menu-image"
+                    />
+                    <div class="header__nav__back">
+                        <div class="header__nav__front">
+                            <img
+                                class="header__nav__close-icon"
+                                src="./assets/images/icon-menu-close.svg"
+                                alt="close-icon"
+                            />
+                            <div class="header__nav__menu">
+                                <p class="header__nav__title">Home</p>
+                                <p class="header__nav__title">New</p>
+                                <p class="header__nav__title">Popular</p>
+                                <p class="header__nav__title">Trending</p>
+                                <p class="header__nav__title">Categories</p>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <main class="main-container">
+                <section class="first-section">
+                    <picture class="first-section__picture">
+                        <source srcset="./assets/images/image-web-3-desktop.jpg" media="(min-width: 768px)" />
+                        <source srcset="./assets/images/image-web-3-mobile.jpg" media="(max-width: 767px)" />
+                        <img src="./assets/images/image-web-3-mobile.jpg" alt="web-image" />
+                    </picture>
+                    <div class="first-section__flex1">
+                        <h1 class="first-section__title">The Bright Future of Web 3.0?</h1>
+                        <div class="first-section__flex2">
+                            <p class="first-section__text">
+                                We dive into the next evolution of the web that claims to put the power of the platforms
+                                back into the hands of the people. But is it really fulfilling its promise?
+                            </p>
+                            <button class="first-section__button">Read more</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- seccion aside -->
+                <section class="second-section">
+                    <h2 class="second-section__title">New</h2>
+                    <article class="second-section__article">
+                        <h3 class="second-section__article__title">Hydrogen VS Electric Cars</h3>
+                        <p class="second-section__article__text">Will hydrogen-fueled cars ever catch up to EVs?</p>
+                    </article>
+                    <article class="second-section__article">
+                        <h3 class="second-section__article__title">The Downsides of AI Artistry</h3>
+                        <p class="second-section__article__text">
+                            What are the possible adverse effects of on-demand AI image generation?
+                        </p>
+                    </article>
+                    <article class="second-section__article">
+                        <h3 class="second-section__article__title">Is VC Funding Drying Up?</h3>
+                        <p class="second-section__article__text">
+                            Private funding by VC firms is down 50% YOY. We take a look at what that means.
+                        </p>
+                    </article>
+                </section>
+                <!-- seccion bottom -->
+                <section class="third-section">
+                    <article class="third-section__article article-1">
+                        <img
+                            class="third-section__article__image"
+                            src="./assets/images/image-retro-pcs.jpg"
+                            alt="retro-pcs-image"
+                        />
+                        <div>
+                            <h4 class="third-section__article__number">01</h4>
+                            <strong class="third-section__article__title">Reviving Retro PCs</strong>
+                            <p class="third-section__article__text">
+                                What happens when old PCs are given modern upgrades?
+                            </p>
+                        </div>
+                    </article>
+                    <article class="third-section__article article-2">
+                        <img
+                            class="third-section__article__image"
+                            src="./assets/images/image-top-laptops.jpg"
+                            alt="top-laptops-image"
+                        />
+                        <div class="">
+                            <h4 class="third-section__article__number">02</h4>
+                            <strong class="third-section__article__title">Top 10 Laptops of 2022</strong>
+                            <p class="third-section__article__text">Our best picks for various needs and budgets.</p>
+                        </div>
+                    </article>
+                    <article class="third-section__article article-3">
+                        <img
+                            class="third-section__article__image"
+                            src="./assets/images/image-gaming-growth.jpg"
+                            alt="growth-gamming-image"
+                        />
+                        <div>
+                            <h4 class="third-section__article__number">03</h4>
+                            <strong class="third-section__article__title">The Growth of Gaming</strong>
+                            <p class="third-section__article__text">
+                                How the pandemic has sparked fresh opportunities.
+                            </p>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </div>
+        <script src="./assets/js/script.js"></script>
+    </body>
 </html>
