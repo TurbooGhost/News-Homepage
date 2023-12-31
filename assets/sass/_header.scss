@@ -1,39 +1,121 @@
 @use "colors";
 
 .header {
-  width: 100%;
-  height: 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  margin-bottom: 2em;
+    overflow: hidden;
 
-  &__logo {
-    fill: #00001a;
-    stroke-width: 1px;
-    stroke: #000;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
+    width: 100%;
+    height: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 2em;
 
-  &__nav__back {
+    &__logo {
+        fill: #00001a;
+        stroke-width: 1px;
+        stroke: #000;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    &__nav__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.386);
+    }
+
+    &__nav__front {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: colors.$white;
+        width: 67%;
+        height: 100%;
+    }
+
+    &__nav__menu {
+        position: absolute;
+        top: 8em;
+        left: 1.33em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.4em;
+        font-size: 1.2em;
+    }
+
+    &__nav__title {
+        display: inline-flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.5rem;
+        color: #5e607a;
+        &:hover {
+            cursor: pointer;
+            color: colors.$softRed;
+        }
+    }
+
+    &__nav__close-icon {
+        position: absolute;
+        top: 1em;
+        right: 1.3em;
+        height: 2.267em;
+        width: 2.267em;
+    }
+
+    @media (min-width: 75rem) {
+        height: 3.33em;
+        &__logo {
+            width: 4.267em;
+            height: 2.667em;
+        }
+
+        &__nav {
+            padding: 0.533em 0;
+            &__back {
+                position: unset;
+                background-color: unset;
+            }
+            &__front {
+                width: unset;
+                position: unset;
+            }
+            &__menu {
+                height: 22px;
+                font-size: 0.9375rem;
+                gap: 2.5rem;
+                position: unset;
+                flex-direction: row;
+            }
+        }
+    }
+}
+
+// --- NEW CODE ---
+.menu-toggle-input {
+    display: none;
+}
+
+.menu-toggle-label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.header__nav__back {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.386);
-  }
+    display: none;
+    pointer-events: none;
+}
 
-  &__nav__front {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: colors.$white;
-    width: 67%;
-    height: 100%;
-  }
-
-  &__nav__menu {
+.header__nav__menu {
     position: absolute;
     top: 8em;
     left: 1.33em;
@@ -42,52 +124,37 @@
     align-items: flex-start;
     gap: 1.4em;
     font-size: 1.2em;
-  }
+}
 
-  &__nav__title {
-    display: inline-flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2.5rem;
-    color: #5e607a;
-    &:hover {
-      cursor: pointer;
-      color: colors.$softRed;
-    }
-  }
+.menu-toggle-input:checked + .menu-toggle-label .header__nav__back {
+    display: block;
+    pointer-events: auto;
+}
 
-  &__nav__close-icon {
+.menu-toggle-input {
+    display: none;
+}
+
+.menu-toggle-label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.header__nav__back {
     position: absolute;
-    top: 1em;
-    right: 1.3em;
-    height: 2.267em;
-    width: 2.267em;
-  }
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background: #fff;
+    display: none;
+    pointer-events: none;
+}
 
-  @media (min-width: 75rem) {
-    height: 3.33em;
-    &__logo {
-      width: 4.267em;
-      height: 2.667em;
-    }
+.header__nav__close-icon {
+    display: none;
+}
 
-    &__nav {
-      padding: 0.533em 0;
-      &__back {
-        position: unset;
-        background-color: unset;
-      }
-      &__front {
-        width: unset;
-        position: unset;
-      }
-      &__menu {
-        height: 22px;
-        font-size: 0.9375rem;
-        gap: 2.5rem;
-        position: unset;
-        flex-direction: row;
-      }
-    }
-  }
+.header__hamburguer-menu {
+    display: inline-block;
 }

@@ -5,42 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
         <link rel="stylesheet" href="./assets/css/style.css" />
-
-        <style>
-            /* Hide the checkbox input */
-            .menu-toggle-input {
-                display: none;
-            }
-
-            /* Style the label to look like a button */
-            .menu-toggle-label {
-                display: inline-block;
-                cursor: pointer;
-            }
-
-            /* Hide the navigation menu by default */
-            .header__nav__back {
-                display: none;
-            }
-
-            /* Style the navigation menu */
-            /* Add your styles for the menu here */
-
-            /* Use the :checked pseudo-class to show the menu when the checkbox is checked */
-            .menu-toggle-input:checked + .header__nav__back {
-                display: block;
-            }
-
-            /* Style the close icon as needed */
-            .menu-toggle-input:checked + .menu-toggle-label .header__hamburguer-menu {
-                display: none;
-            }
-
-            .menu-toggle-input:checked + .menu-toggle-label .header__nav__close-icon {
-                display: block;
-            }
-        </style>
-
         <title>Frontend Mentor | News homepage</title>
     </head>
     <body>
@@ -49,9 +13,6 @@
                 <img class="header__logo" src="./assets/images/logo.svg" alt="logo-image" />
                 <nav class="header__nav">
                     <!-- Hidden checkbox input for toggle -->
-                    <input type="checkbox" id="menu-toggle" class="menu-toggle-input" />
-
-                    <!-- Label for the checkbox -->
                     <label for="menu-toggle" class="menu-toggle-label">
                         <img
                             class="header__hamburguer-menu"
@@ -60,11 +21,13 @@
                         />
                         <div class="header__nav__back">
                             <!-- Your navigation menu content here -->
-                            <img
-                                class="header__nav__close-icon"
-                                src="./assets/images/icon-menu-close.svg"
-                                alt="close-icon"
-                            />
+                            <label for="menu-toggle" class="close-label">
+                                <img
+                                    class="header__nav__close-icon"
+                                    src="./assets/images/icon-menu-close.svg"
+                                    alt="close-icon"
+                                />
+                            </label>
                             <div class="header__nav__menu">
                                 <p class="header__nav__title">Home</p>
                                 <p class="header__nav__title">New</p>
@@ -159,6 +122,6 @@
                 </section>
             </main>
         </div>
-        <!-- <script src="./assets/js/script.js"></script> -->
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
