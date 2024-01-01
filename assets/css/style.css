@@ -36,6 +36,8 @@ body {
 .navigation {
   margin-bottom: 2rem;
   position: relative;
+  animation: dropInFromTop 1.5s;
+  backface-visibility: hidden;
 }
 .navigation__checkbox {
   display: none;
@@ -161,6 +163,19 @@ body {
 .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
   top: 0;
   transform: rotate(-135deg);
+}
+@keyframes dropInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100rem); /* Starts off-screen, above the view */
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px); /* Drops past the final position a little */
+  }
+  100% {
+    transform: translateY(0); /* Settles into the final position */
+  }
 }
 
 .main-container {
