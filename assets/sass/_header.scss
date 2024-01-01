@@ -1,93 +1,181 @@
-@use "colors";
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
 
-.header {
-  width: 100%;
-  height: 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  margin-bottom: 2em;
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
 
-  &__logo {
-    fill: #00001a;
-    stroke-width: 1px;
-    stroke: #000;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
 
-  &__nav__back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.386);
-  }
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
 
-  &__nav__front {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: colors.$white;
-    width: 67%;
-    height: 100%;
-  }
+$color-white: #fff;
+$color-black: #000;
 
-  &__nav__menu {
-    position: absolute;
-    top: 8em;
-    left: 1.33em;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.4em;
-    font-size: 1.2em;
-  }
+// My Colors
+$softOrange: hsl(35, 77%, 62%);
+$grayishBlue: hsl(233, 8%, 79%);
+$darkGrayishBlue: hsl(236, 13%, 42%);
 
-  &__nav__title {
-    display: inline-flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2.5rem;
-    color: #5e607a;
-    &:hover {
-      cursor: pointer;
-      color: colors.$softRed;
+.navigation {
+    margin-bottom: 2rem;
+    position: relative;
+
+    &__checkbox {
+        display: none;
     }
-  }
 
-  &__nav__close-icon {
-    position: absolute;
-    top: 1em;
-    right: 1.3em;
-    height: 2.267em;
-    width: 2.267em;
-  }
-
-  @media (min-width: 75rem) {
-    height: 3.33em;
     &__logo {
-      width: 4.267em;
-      height: 2.667em;
+        fill: #00001a;
+        stroke-width: 1px;
+        stroke: #000;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    &__button {
+        background-color: $color-white;
+        height: 3rem;
+        width: 3rem;
+        position: absolute;
+        right: 0;
+        border-radius: 50%;
+        z-index: 2000;
+        text-align: center;
+        cursor: pointer;
+        fill: #00001a;
+        stroke-width: 1px;
+        stroke: #000;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    &__background {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 0.2rem;
+        right: 0;
+        background-image: radial-gradient($grayishBlue, $color-white);
+        z-index: 1000;
+        transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
     &__nav {
-      padding: 0.533em 0;
-      &__back {
-        position: unset;
-        background-color: unset;
-      }
-      &__front {
-        width: unset;
-        position: unset;
-      }
-      &__menu {
-        height: 22px;
-        font-size: 0.9375rem;
-        gap: 2.5rem;
-        position: unset;
-        flex-direction: row;
-      }
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1500;
+
+        opacity: 0;
+        width: 0;
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
-  }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        left: 12%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 300;
+            padding: 0.5rem 1rem;
+            color: $color-white;
+            text-decoration: none;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $grayishBlue 50%);
+            background-size: 220%;
+            transition: all 0.4s;
+
+            span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: hsl(35, 77%, 62%);
+            transform: translateX(1rem);
+        }
+    }
+
+    //FUNCTIONALITY
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    //ICON
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after {
+            width: 1.5rem;
+            height: 1px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+            bottom: 2rem;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all 0.2s;
+        }
+
+        &::before {
+            top: -0.4rem;
+        }
+        &::after {
+            top: 0.4rem;
+        }
+    }
+
+    &__button:hover &__icon::before {
+        top: -0.5rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 0.5rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
 }

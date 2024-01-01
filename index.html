@@ -9,32 +9,39 @@
     </head>
     <body>
         <div class="container">
-            <header class="header">
+            <div class="navigation">
                 <img class="header__logo" src="./assets/images/logo.svg" alt="logo-image" />
-                <nav class="header__nav">
-                    <img
-                        class="header__hamburguer-menu"
-                        src="./assets/images/icon-menu.svg"
-                        alt="hamburguer-menu-image"
-                    />
-                    <div class="header__nav__back">
-                        <div class="header__nav__front">
-                            <img
-                                class="header__nav__close-icon"
-                                src="./assets/images/icon-menu-close.svg"
-                                alt="close-icon"
-                            />
-                            <div class="header__nav__menu">
-                                <p class="header__nav__title">Home</p>
-                                <p class="header__nav__title">New</p>
-                                <p class="header__nav__title">Popular</p>
-                                <p class="header__nav__title">Trending</p>
-                                <p class="header__nav__title">Categories</p>
-                            </div>
-                        </div>
-                    </div>
+                <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+
+                <label for="navi-toggle" class="navigation__button">
+                    <span class="navigation__icon">&nbsp;</span>
+                </label>
+
+                <div class="navigation__background">&nbsp;</div>
+
+                <nav class="navigation__nav">
+                    <ul class="navigation__list">
+                        <li class="navigation__item">
+                            <a href="#" class="navigation__link">Home</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a href="#" class="navigation__link">New</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a href="#" class="navigation__link">Popular</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a href="#" class="navigation__link">Trending</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a href="#" class="navigation__link">Categories</a>
+                        </li>
+                    </ul>
                 </nav>
-            </header>
+            </div>
+
+            <!-- ****************************************************** -->
+
             <main class="main-container">
                 <section class="first-section">
                     <picture class="first-section__picture">
@@ -53,6 +60,8 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- ****************************************************** -->
                 <!-- seccion aside -->
                 <section class="second-section">
                     <h2 class="second-section__title">New</h2>
@@ -73,6 +82,8 @@
                         </p>
                     </article>
                 </section>
+
+                <!-- ****************************************************** -->
                 <!-- seccion bottom -->
                 <section class="third-section">
                     <article class="third-section__article article-1">
@@ -118,6 +129,5 @@
                 </section>
             </main>
         </div>
-        <script src="./assets/js/script.js"></script>
     </body>
 </html>
