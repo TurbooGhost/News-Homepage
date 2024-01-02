@@ -167,14 +167,14 @@ body {
 @keyframes dropInFromTop {
   0% {
     opacity: 0;
-    transform: translateY(-100rem); /* Starts off-screen, above the view */
+    transform: translateY(-100rem);
   }
   60% {
     opacity: 1;
-    transform: translateY(10px); /* Drops past the final position a little */
+    transform: translateY(10px);
   }
   100% {
-    transform: translateY(0); /* Settles into the final position */
+    transform: translateY(0);
   }
 }
 

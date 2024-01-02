@@ -1,6 +1,8 @@
-@use "colors";
-@use "initials";
-@use "sections";
-@use "header";
-@use "main";
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
 
+@import "./base/initials";
+@import "./base/sections";
+
+@import "./components/header";
+@import "./components/main";
