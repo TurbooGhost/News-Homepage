@@ -41,21 +41,58 @@ body {
 }
 .navigation__checkbox {
   display: none;
+  overflow: hidden;
+  height: 100%;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon {
+  background-color: transparent;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+  transform: translateX(-50%) rotate(135deg);
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+  transform: translateX(-50%) rotate(-135deg);
+}
+.navigation__checkbox:not(:checked) + .navigation__button .navigation__icon {
+  background-color: #333;
+}
+.navigation__checkbox:not(:checked) + .navigation__button .navigation__icon::before, .navigation__checkbox:not(:checked) + .navigation__button .navigation__icon::after {
+  transform: translateX(-50%) rotate(0);
+}
+.navigation__checkbox__checkbox:checked + .navigation__button .navigation__icon {
+  background-color: transparent;
+}
+.navigation__checkbox__checkbox:checked + .navigation__button .navigation__icon::before {
+  transform: translateX(-50%) rotate(135deg);
+}
+.navigation__checkbox__checkbox:checked + .navigation__button .navigation__icon::after {
+  transform: translateX(-50%) rotate(-135deg);
+}
+.navigation__checkbox__checkbox:not(:checked) + .navigation__button .navigation__icon {
+  background-color: #333;
+  transform: translateX(-50%);
+}
+.navigation__checkbox__checkbox:not(:checked) + .navigation__button .navigation__icon::before {
+  transform: translateX(-50%) translateY(-0.6rem);
+}
+.navigation__checkbox__checkbox:not(:checked) + .navigation__button .navigation__icon::after {
+  transform: translateX(-50%) translateY(0.6rem);
 }
 .navigation__logo {
   fill: #00001a;
   stroke-width: 1px;
   stroke: #000;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  width: 4.267em;
+  height: 2.667em;
 }
 .navigation__button {
-  background-color: #fff;
   height: 3rem;
   width: 3rem;
   position: absolute;
   right: 0;
   border-radius: 50%;
-  z-index: 2000;
+  z-index: 2001;
   text-align: center;
   cursor: pointer;
   fill: #00001a;
@@ -64,15 +101,16 @@ body {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .navigation__background {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
   position: absolute;
-  top: 0.2rem;
-  right: 0;
-  background-image: radial-gradient(hsl(233, 8%, 79%), #fff);
-  z-index: 1000;
-  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  top: 8em;
+  right: 1.33em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.4em;
+  font-size: 1.2em;
+  backface-visibility: hidden;
+  background: var(--Almost-White, #fffdfa);
 }
 .navigation__nav {
   height: 100vh;
@@ -81,30 +119,53 @@ body {
   z-index: 1500;
   opacity: 0;
   width: 0;
-  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 67%;
+  height: 100%;
 }
 .navigation__list {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  list-style: none;
-  text-align: center;
-  width: 100%;
+  top: 8em;
+  left: 8.33em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.4em;
+  font-size: 1.2em;
+  color: hsl(236, 13%, 42%);
 }
 .navigation__item {
-  margin: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  color: #5e607a;
+  color: hsl(236, 13%, 42%);
+}
+.navigation__item:hover {
+  cursor: pointer;
+  color: red;
 }
 .navigation__link:link, .navigation__link:visited {
   display: inline-block;
-  font-size: 1.5rem;
   font-weight: 300;
   color: #fff;
   text-decoration: none;
-  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, hsl(233, 8%, 79%) 50%);
   background-size: 220%;
   transition: all 0.4s;
+  color: hsl(236, 13%, 42%);
+}
+.navigation__link:link:disabled, .navigation__link:visited:disabled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.386);
+  background-color: dodgerblue;
 }
 .navigation__link:link span, .navigation__link:visited span {
   margin-right: 1.5rem;
@@ -145,6 +206,21 @@ body {
 .navigation__icon::after {
   top: 0.4rem;
 }
+.navigation__icon__button:hover .navigation__icon__icon::before {
+  transform: translate(-50%, -1.2rem);
+}
+.navigation__icon__button:hover .navigation__icon__icon::after {
+  transform: translate(-50%, 1.2rem);
+}
+.navigation__icon__checkbox:checked + .navigation__icon__button .navigation__icon__icon {
+  background-color: transparent;
+}
+.navigation__icon__checkbox:checked + .navigation__icon__button .navigation__icon__icon::before {
+  transform: translate(-50%, 0) rotate(45deg);
+}
+.navigation__icon__checkbox:checked + .navigation__icon__button .navigation__icon__icon::after {
+  transform: translate(-50%, 0) rotate(-45deg);
+}
 .navigation__button:hover .navigation__icon::before {
   top: -0.5rem;
 }
@@ -175,6 +251,76 @@ body {
     transform: translateY(0);
   }
 }
+.navigation__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.386);
+  z-index: 1000;
+}
+.navigation__checkbox:checked ~ .navigation__overlay {
+  display: block;
+  overflow: hidden; /* This will disable scrolling on the body */
+}
+.navigation__checkbox:checked ~ .navigation__background {
+  transform: scale(80);
+  z-index: 2000;
+  overflow-x: hidden;
+}
+.navigation__checkbox:checked ~ .navigation__nav {
+  opacity: 1;
+  width: 100%;
+  z-index: 2000;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon {
+  background-color: transparent;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+.navigation__button .navigation__icon {
+  position: relative;
+}
+.navigation__button .navigation__icon, .navigation__button .navigation__icon::before, .navigation__button .navigation__icon::after {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.2s;
+  transition: transform 0.1s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.navigation__button .navigation__icon::before, .navigation__button .navigation__icon::after {
+  transition: transform 0.3s ease;
+  content: "";
+  top: 50%;
+}
+.navigation__button .navigation__icon::before {
+  transform: translateY(-0.6rem) translateX(-50%);
+}
+.navigation__button .navigation__icon::after {
+  transform: translateY(0.6rem) translateX(-50%);
+}
+.navigation__button:hover .navigation__icon::before {
+  transform: translateY(90%) translateX(-50%) rotate(-45deg);
+}
+.navigation__button:hover .navigation__icon::after {
+  transform: translateY(-650%) translateX(-50%) rotate(-135deg);
+}
+.navigation__button:hover .navigation__icon {
+  background-color: transparent;
+}
 
 @media only screen and (min-width: 1200px) {
   .navigation {
@@ -191,21 +337,26 @@ body {
   .navigation__nav {
     position: absolute;
     top: 0;
-    left: -10px;
     width: 100%;
     height: 100%;
     display: inline-block;
     opacity: 1;
     list-style: none;
     text-align: center;
+    display: flex;
+    align-items: end;
   }
   .navigation__list {
     position: absolute;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 2.5rem;
     list-style: none;
-    width: 0;
+    width: 100%;
+    flex-direction: row;
+    top: 0;
+    left: 0;
   }
   .navigation__item {
     color: white;
@@ -222,10 +373,9 @@ body {
   }
   .navigation__link:link, .navigation__link:visited {
     display: inline-block;
-    font-size: 1.5rem;
     font-weight: 300;
     color: #5e607a;
-    transition: all 0.4s;
+    transition: all 0.2s;
     padding-bottom: 1px;
     background-image: none;
     background-size: 100%;
@@ -242,7 +392,7 @@ body {
     width: 0;
     height: 1px;
     background: hsl(5, 85%, 63%);
-    transition: width 0.4s ease;
+    transition: width 0.2s ease;
   }
   .navigation__link:hover::after {
     width: 100%;

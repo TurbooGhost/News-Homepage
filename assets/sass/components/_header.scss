@@ -6,6 +6,57 @@
 
     &__checkbox {
         display: none;
+        overflow: hidden;
+        height: 100%;
+
+        // When the checkbox is checked, rotate the pseudo-elements to form an "X"
+        &:checked + .navigation__button .navigation__icon {
+            background-color: transparent; // Hide the middle bar
+            &::before {
+                transform: translateX(-50%) rotate(135deg); // Top bar of "X"
+            }
+            &::after {
+                transform: translateX(-50%) rotate(-135deg); // Bottom bar of "X"
+            }
+        }
+
+        // When the checkbox is not checked, reset the icon to the hamburger menu
+        &:not(:checked) + .navigation__button .navigation__icon {
+            background-color: #333; // Show the middle bar
+            &::before,
+            &::after {
+                transform: translateX(-50%) rotate(0); // Reset to initial state
+            }
+        }
+
+        &__checkbox:checked + .navigation__button .navigation__icon {
+            // Hide the middle bar when the menu is open
+            background-color: transparent;
+        }
+
+        &__checkbox:checked + .navigation__button .navigation__icon::before {
+            // Rotate top bar to form one line of the "X" when the menu is open
+            transform: translateX(-50%) rotate(135deg);
+        }
+
+        &__checkbox:checked + .navigation__button .navigation__icon::after {
+            // Rotate bottom bar to form the other line of the "X" when the menu is open
+            transform: translateX(-50%) rotate(-135deg);
+        }
+
+        // Reset the icon back to the hamburger menu when the checkbox is NOT checked
+        &__checkbox:not(:checked) + .navigation__button .navigation__icon {
+            background-color: #333; // or the color of the middle bar
+            transform: translateX(-50%); // Reset transform on the middle bar
+        }
+
+        &__checkbox:not(:checked) + .navigation__button .navigation__icon::before {
+            transform: translateX(-50%) translateY(-0.6rem); // Reset transform on the top bar
+        }
+
+        &__checkbox:not(:checked) + .navigation__button .navigation__icon::after {
+            transform: translateX(-50%) translateY(0.6rem); // Reset transform on the bottom bar
+        }
     }
 
     &__logo {
@@ -13,16 +64,17 @@
         stroke-width: 1px;
         stroke: #000;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        width: 4.267em;
+        height: 2.667em;
     }
 
     &__button {
-        background-color: $color-white;
         height: 3rem;
         width: 3rem;
         position: absolute;
         right: 0;
         border-radius: 50%;
-        z-index: 2000;
+        z-index: 2001;
         text-align: center;
         cursor: pointer;
         fill: #00001a;
@@ -32,55 +84,87 @@
     }
 
     &__background {
-        height: 3rem;
-        width: 3rem;
-        border-radius: 50%;
         position: absolute;
-        top: 0.2rem;
-        right: 0;
-        background-image: radial-gradient($grayishBlue, $color-white);
-        z-index: 1000;
-        transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+        top: 8em;
+        right: 1.33em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.4em;
+        font-size: 1.2em;
+        backface-visibility: hidden;
+
+        background: var(--Almost-White, #fffdfa);
     }
 
     &__nav {
         height: 100vh;
         position: fixed;
         top: 0;
-        // left: 0;
         z-index: 1500;
 
         opacity: 0;
         width: 0;
-        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 67%;
+        height: 100%;
     }
 
     &__list {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        list-style: none;
-        text-align: center;
-        width: 100%;
+        top: 8em;
+        left: 8.33em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.4em;
+        font-size: 1.2em;
+        color: $darkGrayishBlue;
     }
 
     &__item {
-        margin: 1rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2.5rem;
+        color: #5e607a;
+        color: $darkGrayishBlue;
+
+        &:hover {
+            cursor: pointer;
+            color: red;
+        }
     }
 
     &__link {
         &:link,
         &:visited {
             display: inline-block;
-            font-size: 1.5rem;
+
             font-weight: 300;
             color: $color-white;
             text-decoration: none;
-            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $grayishBlue 50%);
             background-size: 220%;
             transition: all 0.4s;
+            color: $darkGrayishBlue;
+
+            // background-color: dodgerblue;
+
+            &:disabled {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.386);
+
+                background-color: dodgerblue;
+            }
 
             span {
                 margin-right: 1.5rem;
@@ -135,6 +219,26 @@
         &::after {
             top: 0.4rem;
         }
+
+        &__button:hover &__icon::before {
+            transform: translate(-50%, -1.2rem); // slightly further away from center
+        }
+
+        &__button:hover &__icon::after {
+            transform: translate(-50%, 1.2rem); // slightly further away from center
+        }
+
+        &__checkbox:checked + &__button &__icon {
+            background-color: transparent; // hide the center bar
+        }
+
+        &__checkbox:checked + &__button &__icon::before {
+            transform: translate(-50%, 0) rotate(45deg); // rotate to form X
+        }
+
+        &__checkbox:checked + &__button &__icon::after {
+            transform: translate(-50%, 0) rotate(-45deg); // rotate to form X
+        }
     }
 
     &__button:hover &__icon::before {
@@ -174,7 +278,101 @@
             transform: translateY(0);
         }
     }
+
+    // This will cover the entire viewport when the checkbox is checked
+    &__overlay {
+        display: none; // By default, the overlay is not displayed
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.386); // Semi-transparent white background
+        z-index: 1000; // Below the navigation elements but above other content
+    }
+
+    &__checkbox:checked ~ &__overlay {
+        display: block; // Show the overlay when the checkbox is checked
+        // display: none; // Show the overlay when the checkbox is checked
+        overflow: hidden; /* This will disable scrolling on the body */
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+        z-index: 2000; // Ensure the background is above the overlay
+        overflow-x: hidden;
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+        z-index: 2000; // Ensure the nav is above the overlay
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+
+    &__button {
+        // ... existing styles for button ...
+
+        // Targeting the navigation icon within the button
+        .navigation__icon {
+            position: relative;
+
+            &,
+            &::before,
+            &::after {
+                // Common styles for the icon lines
+                display: block;
+                width: 3rem;
+                height: 2px;
+                background-color: #333;
+                transition: all 0.2s;
+                transition: transform 0.1s ease;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            &::before,
+            &::after {
+                transition: transform 0.3s ease;
+                content: "";
+                top: 50%;
+            }
+            &::before {
+                transform: translateY(-0.6rem) translateX(-50%);
+            } // upper line
+            &::after {
+                transform: translateY(0.6rem) translateX(-50%);
+            } // lower line
+        }
+
+        &:hover .navigation__icon::before {
+            transform: translateY(90%) translateX(-50%) rotate(-45deg);
+        }
+        &:hover .navigation__icon::after {
+            transform: translateY(-650%) translateX(-50%) rotate(-135deg);
+        }
+        &:hover .navigation__icon {
+            background-color: transparent; // Center line disappears
+        }
+    }
 }
+
+// ************************************ NEW ************************************
 
 @include respond(big-desktop) {
     .navigation {
@@ -195,22 +393,35 @@
         &__nav {
             position: absolute;
             top: 0;
-            left: -10px;
+            // left: -10px;
+            // right: -150px;
             width: 100%;
             height: 100%;
             display: inline-block;
             opacity: 1;
             list-style: none;
             text-align: center;
+
+            display: flex;
+            // justify-content: space-between;
+            align-items: end;
+            // margin: 0;
+            // padding: 0;
+            // width: 0;
+            // transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         &__list {
             position: absolute;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: flex-end;
+            align-items: flex-start;
+            gap: 2.5rem;
             list-style: none;
-            width: 0;
+            width: 100%;
+            flex-direction: row;
+            top: 0;
+            left: 0;
         }
 
         &__item {
@@ -231,10 +442,10 @@
             &:link,
             &:visited {
                 display: inline-block;
-                font-size: 1.5rem;
+                // font-size: 1.5rem;
                 font-weight: 300;
                 color: #5e607a;
-                transition: all 0.4s;
+                transition: all 0.2s;
                 padding-bottom: 1px;
                 background-image: none;
                 background-size: 100%;
@@ -253,7 +464,7 @@
                 width: 0;
                 height: 1px;
                 background: $softRed;
-                transition: width 0.4s ease;
+                transition: width 0.2s ease;
             }
 
             &:hover::after {
